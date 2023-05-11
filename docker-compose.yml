@@ -1,0 +1,13 @@
+version: "3"
+networks:
+  maquequette:
+    external: false
+
+services: 
+  app:
+    build:
+      context: ./ServiceAws
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8000:80"
