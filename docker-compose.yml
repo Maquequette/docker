@@ -4,10 +4,21 @@ networks:
     external: false
 
 services: 
-  app:
+  laravelserviceaws:
     build:
       context: ./ServiceAws
       dockerfile: Dockerfile
     restart: unless-stopped
     ports:
-      - "8000:80"
+      - "8001:81"
+
+
+  symfonyservicecrud:
+    build:
+      context: ./ServiceCrud
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8002:82"
+    volumes:
+      - ./ServiceCrud/symfony:/var/www/html
